@@ -1,0 +1,105 @@
+$(document).ready(function(){
+    var autCode=CreateTokken();
+    var Element;
+    var MyTable=$('#Groups').DataTable({
+       ajax:{
+         url:"http://localhost:55769/api/Group/",
+         dataSrc:"",
+         headers:{"Authorization":autCode}
+       },
+       columns:[
+         {data:"Id"},
+         {data:"Title"},
+         {data:"Id",render:function(data)
+         {
+           return '<button class="js-edit" data-myid="'+data+'">Edit</button> | <button class="js-delete" data-myid="'+data+'">Delete</button>'
+         }}
+       ]
+     });
+   //alert(MyTable.ajax);
+   ////////create|update
+   $('#btnAdd').click(function(){
+     $('#CreateModal').modal('show');
+   });
+   $('#Groups').on('click','.js-edit',function(){
+     Element=$(this);
+     $.ajax({
+          url:"http://localhost:55769/api/Group/"+Element.attr('data-myid'),
+          method:"GET",
+          headers:{"Authorization":autCode},
+          success: function(result){
+           $('#txtId').val(result.Id);
+           $('#txtTitle').val(result.Title);
+           $('#CreateModal').modal('show');
+          }
+     });
+   });
+   $('#btnCreate').click(function(){
+     if($('#txtId').val()=='')
+     {
+       $.ajax({
+       url:'http://localhost:55769/api/Group/',
+       type:'POST',
+       headers:{"Authorization":autCode},
+       data:{Title:$('#txtTitle').val()},
+       success:function(result){
+         //MyTable.ajax.reload();
+         MyTable.row.add({Id:result.Id,Title:result.Title}).draw();
+         //window.location='index.html';
+       },
+       error:function()
+       {
+         alert('we have an error');
+       },
+       complete:function(){
+         $('#txtTitle').val('');
+         $('#CreateModal').modal('hide');
+       }
+     });
+     }
+     else
+     {
+       $.ajax({
+       url:'http://localhost:55769/api/Group/',
+       type:'PUT',
+       headers:{"Authorization":autCode},
+       data:{Id:$('#txtId').val(),Title:$('#txtTitle').val()},
+       success:function(result){
+         MyTable.ajax.reload();
+       },
+       error:function()
+       {
+         alert('we have an error');
+       },
+       complete:function(){
+         $('#txtId').val('');
+         $('#txtTitle').val('');
+         $('#CreateModal').modal('hide');
+       }
+     });
+     }
+   });
+   $('#btnClose').click(function(){
+         $('#txtTitle').val('');
+         $('#CreateModal').modal('hide');
+   });
+   ////////create|update
+   ////////delete
+   $('#Groups').on('click','.js-delete',function(){
+     Element=$(this);
+     bootbox.confirm('are you sure you want to delete this item?',function(result){
+       if(result)
+       {
+        $.ajax({
+          url:"http://localhost:55769/api/Group/"+Element.attr('data-myid'),
+          method:"DELETE",
+          headers:{"Authorization":autCode},
+          success: function(){
+            MyTable.row(Element.parents('tr')).remove().draw();
+          }
+        });
+       }
+     });
+   });
+   ////////delete
+   });

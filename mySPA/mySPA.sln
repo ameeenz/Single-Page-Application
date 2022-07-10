@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.106
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication1", "WebApplication1\WebApplication1.csproj", "{A75FD7C3-EC21-4AAB-8063-7ABF6498FB76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChatBox", "..\..\ChatBox\ChatBox\ChatBox.csproj", "{76CF0F0D-D40F-46AC-9F49-078A137C04DA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A75FD7C3-EC21-4AAB-8063-7ABF6498FB76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75FD7C3-EC21-4AAB-8063-7ABF6498FB76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75FD7C3-EC21-4AAB-8063-7ABF6498FB76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75FD7C3-EC21-4AAB-8063-7ABF6498FB76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76CF0F0D-D40F-46AC-9F49-078A137C04DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76CF0F0D-D40F-46AC-9F49-078A137C04DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76CF0F0D-D40F-46AC-9F49-078A137C04DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76CF0F0D-D40F-46AC-9F49-078A137C04DA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {68093E39-42D2-447B-B779-189831A133BA}
+	EndGlobalSection
+EndGlobal
